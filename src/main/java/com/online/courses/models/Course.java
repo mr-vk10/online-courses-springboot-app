@@ -31,20 +31,7 @@ public class Course {
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="instructor_id")
 	Instructor instructor;
-	
-	// As this is unidirectional OneToMany mapping, the name in JoinColumn refers to the column in review table
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="course_id")
-	private List<Review> review;
-	
-	// for @ManyToMany mapping we use @JoinTable in both Entities
-	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinTable(name="course_student",
-		joinColumns = @JoinColumn(name="course_id")	,
-		inverseJoinColumns = @JoinColumn(name="student_id")
-	)
-	private List<Student> students;
-	
+		
 	public Course() {
 		
 	}
@@ -78,22 +65,6 @@ public class Course {
 		this.instructor = instructor;
 	}
 	
-	public List<Review> getReview() {
-		return review;
-	}
-
-	public void setReview(List<Review> review) {
-		this.review = review;
-	}
-	
-	public List<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", title=" + title + ", instructor=" + instructor + "]";

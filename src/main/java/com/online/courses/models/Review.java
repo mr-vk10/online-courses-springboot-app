@@ -22,6 +22,9 @@ public class Review {
 	@Column(name="comment")
 	private String comment;
 	
+	@Column(name="course_id")
+	private String courseId;
+	
 	// As there is uni directional relationship between a review and course i.e.
 	// we cannot fetch a course from its review
 	// so we do not define a field for it here
@@ -30,8 +33,10 @@ public class Review {
 		
 	}
 
-	public Review(String comment, Course course) {
+	
+	public Review(String comment, String courseId) {
 		this.comment = comment;
+		this.courseId = courseId;
 	}
 
 	public int getId() {
@@ -50,9 +55,18 @@ public class Review {
 		this.comment = comment;
 	}
 
+	public String getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", comment=" + comment + "]";
+		return "Review [id=" + id + ", comment=" + comment + ", courseId=" + courseId + "]";
 	}
+
 	
 }

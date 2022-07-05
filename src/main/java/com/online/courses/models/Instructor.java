@@ -40,11 +40,6 @@ public class Instructor {
 	@JoinColumn(name = "instructor_detail_id")
 	private InstructorDetail instructorDetail;
 
-	// setup mapping to Course entity
-	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-			CascadeType.REFRESH })
-	private List<Course> courses;
-
 	// create constructors
 
 	public Instructor() {
@@ -99,14 +94,6 @@ public class Instructor {
 
 	public void setInstructorDetail(InstructorDetail instructorDetail) {
 		this.instructorDetail = instructorDetail;
-	}
-
-	public List<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
 	}
 
 	// generate toString method

@@ -28,12 +28,6 @@ public class InstructorDetail {
 	@Column(name = "hobby")
 	private String hobby;
 
-	// even though Instructor detail has no coulumn for instructor, still we add an
-	// Instructor property (and getters/setters)
-	// This is for bi-directional mapping
-	@OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
-	private Instructor instructor;
-
 	// create constructors
 
 	public InstructorDetail() {
@@ -69,14 +63,6 @@ public class InstructorDetail {
 
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
-	}
-
-	public Instructor getInstructor() {
-		return instructor;
-	}
-
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
 	}
 
 	// generate toString method

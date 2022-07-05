@@ -1,16 +1,60 @@
 package com.online.courses.controller;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.online.courses.dto.CourseFormBean;
+import com.online.courses.models.Course;
+import com.online.courses.models.Review;
+import com.online.courses.services.CourseService;
+import com.online.courses.services.ReviewService;
 
 
 @RestController
+// @RequestMapping("/api") // add api as base	
 public class MyRestController {
+
+	@Autowired
+	private CourseService courseService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@GetMapping("/")
 	public String sayHello() {
 		return "Hello world time on server is: "+LocalDateTime.now();
+	}
+	
+	@GetMapping("/courses")
+	public List<Course> getCourses() {
+		return courseService.getCourses();
+	}
+	
+	@GetMapping("/courses/{courseId}")
+	public Optional<Course> getCourse(@PathVariable int courseId) {
+		return courseService.getCourse(courseId);
+	}
+	
+	@PostMapping("/courses")
+	public Course saveCourse(@RequestBody CourseFormBean courseFormBean) {
+		return courseService.saveCourse(courseFormBean);
+	}
+	
+	@PostMapping("/review")
+	public Review postReview(@RequestBody CourseFormBean courseFormBean) {
+		return reviewService.addCourseReview(courseFormBean);
+	}
+	
+	@GetMapping("/review/{courseId}")
+	public List<Review> getCourseReviews(@PathVariable int courseId) {
+		return reviewService.getCourseReviews(courseId);
 	}
 
 }
