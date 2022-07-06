@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.online.courses.dto.CourseFormBean;
+import com.online.courses.dto.ReviewFormBean;
 import com.online.courses.models.Course;
 import com.online.courses.models.Review;
 import com.online.courses.services.CourseService;
@@ -53,7 +54,7 @@ public class MyRestController {
 	}
 	
 	@GetMapping("/review/{courseId}")
-	public List<Review> getCourseReviews(@PathVariable int courseId) {
+	public ReviewFormBean getCourseReviews(@PathVariable int courseId) {
 		return reviewService.getCourseReviews(courseId);
 	}
 
