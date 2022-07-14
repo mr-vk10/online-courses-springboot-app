@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.online</groupId>
-	<artifactId>courses</artifactId>
+	<artifactId>online-courses-springboot-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>courses</name>
 	<description>Demo project for Spring Boot</description>
