@@ -1,4 +1,4 @@
-package com.online.courses.controller;
+ package com.online.courses.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.online.courses.dto.CourseFormBean;
 import com.online.courses.dto.ReviewFormBean;
-import com.online.courses.models.Course;
-import com.online.courses.models.Review;
+import com.online.courses.models.CourseMst;
+import com.online.courses.models.ReviewMst;
 import com.online.courses.services.CourseService;
 import com.online.courses.services.ReviewService;
 
@@ -34,28 +34,34 @@ public class MyRestController {
 	}
 	
 	@GetMapping("/courses")
-	public List<Course> getCourses() {
+	public List<CourseMst> getCourses() {
 		return courseService.getCourses();
 	}
 	
 	@GetMapping("/courses/{courseId}")
-	public Optional<Course> getCourse(@PathVariable int courseId) {
+	public Optional<CourseMst> getCourse(@PathVariable int courseId) {
 		return courseService.getCourse(courseId);
 	}
 	
 	@PostMapping("/courses")
-	public Course saveCourse(@RequestBody CourseFormBean courseFormBean) {
+	public CourseMst saveCourse(@RequestBody CourseFormBean courseFormBean) {
 		return courseService.saveCourse(courseFormBean);
 	}
 	
 	@PostMapping("/review")
-	public Review postReview(@RequestBody CourseFormBean courseFormBean) {
+	public ReviewMst postReview(@RequestBody CourseFormBean courseFormBean) {
 		return reviewService.addCourseReview(courseFormBean);
 	}
 	
-	@GetMapping("/review/{courseId}")
+	@GetMapping("/review/course/{courseId}")
 	public ReviewFormBean getCourseReviews(@PathVariable int courseId) {
 		return reviewService.getCourseReviews(courseId);
+	}
+	
+	@GetMapping("/review/student/{studentId}")
+	public List<ReviewFormBean> getStudentReviews(@PathVariable int studentId) throws Exception{
+		System.out.println("Here");
+		return reviewService.fetchStudentReviews(studentId);
 	}
 
 }

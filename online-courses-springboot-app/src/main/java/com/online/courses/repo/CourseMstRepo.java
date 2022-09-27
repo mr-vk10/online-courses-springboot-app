@@ -3,9 +3,9 @@ package com.online.courses.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.online.courses.models.InstructorDetail;
+import com.online.courses.models.CourseMst;
 
 @Repository
-public interface InstructorDetailRepo extends JpaRepository<InstructorDetail, Integer> {
+public interface CourseMstRepo extends JpaRepository<CourseMst, Integer> {
 
 }

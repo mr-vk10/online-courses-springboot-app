@@ -3,18 +3,15 @@ package com.online.courses.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.online.courses.dto.CourseFormBean;
-import com.online.courses.models.Course;
-import com.online.courses.repo.CourseRepo;
+import com.online.courses.models.CourseMst;
 
 public interface CourseService {
 	
-	List<Course> getCourses();
+	List<CourseMst> getCourses();
 	
-	Optional<Course> getCourse(int courseId);
+	Optional<CourseMst> getCourse(int courseId);
 	
-	Course saveCourse(CourseFormBean courseFormBean);
+	CourseMst saveCourse(CourseFormBean courseFormBean);
 
 }

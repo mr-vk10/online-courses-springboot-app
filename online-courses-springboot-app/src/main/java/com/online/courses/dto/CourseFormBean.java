@@ -1,36 +1,36 @@
 package com.online.courses.dto;
 
-import com.online.courses.models.Course;
-import com.online.courses.models.Review;
+import com.online.courses.models.CourseMst;
+import com.online.courses.models.ReviewMst;
 
 public class CourseFormBean {
 	
-	private Course course;
-	private Review review;
+	private CourseMst courseMst;
+	private ReviewMst reviewMst;
 
 	public CourseFormBean() {
 		
 	}
 
-	public CourseFormBean(Course course, Review review) {
-		this.course = course;
-		this.review = review;
+	public CourseFormBean(CourseMst courseMst, ReviewMst reviewMst) {
+		this.courseMst = courseMst;
+		this.reviewMst = reviewMst;
 	}
 
-	public Course getCourse() {
-		return course;
+	public CourseMst getCourseMst() {
+		return courseMst;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseMst(CourseMst courseMst) {
+		this.courseMst = courseMst;
 	}
 
-	public Review getReview() {
-		return review;
+	public ReviewMst getReviewMst() {
+		return reviewMst;
 	}
 
-	public void setReview(Review review) {
-		this.review = review;
+	public void setReviewMst(ReviewMst reviewMst) {
+		this.reviewMst = reviewMst;
 	}
 
 }

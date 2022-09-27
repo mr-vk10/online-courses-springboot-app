@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.online.courses.models.Review;
+import com.online.courses.models.ReviewMst;
 
 @Repository
-public interface ReviewRepo extends JpaRepository<Review, Integer> {
+public interface ReviewMstRepo extends JpaRepository<ReviewMst, Integer> {
 	
-	List<Review> findByCourseId(String courseId);
+	List<ReviewMst> findByCourseMstId(Integer courseMstId);
 
 }

@@ -16,37 +16,37 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="course")
-public class Course {
+@Table(name="COURSE_MST")
+public class CourseMst {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	int id;
+	@Column(name="COURSE_MST_ID")
+	int courseMstId;
 	
-	@Column(name="title")
+	@Column(name="TITLE")
 	String title;
 	
 	// Here we are not applying Cascade DELETE. i.e. if you deleted a course, donot delete the instructor
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="instructor_id")
-	Instructor instructor;
+	@JoinColumn(name="INSTRUCTOR_MST_ID")
+	InstructorMst instructorMst;
 		
-	public Course() {
+	public CourseMst() {
 		
 	}
 
-	public Course(String title, Instructor instructor) {
+	public CourseMst(String title, InstructorMst instructorMst) {
 		this.title = title;
-		this.instructor = instructor;
+		this.instructorMst = instructorMst;
 	}
 
-	public int getId() {
-		return id;
+	public int getCourseMstId() {
+		return courseMstId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCourseMstId(int courseMstId) {
+		this.courseMstId = courseMstId;
 	}
 
 	public String getTitle() {
@@ -57,17 +57,17 @@ public class Course {
 		this.title = title;
 	}
 
-	public Instructor getInstructor() {
-		return instructor;
+	public InstructorMst getInstructorMst() {
+		return instructorMst;
 	}
 
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
+	public void setInstructorMst(InstructorMst instructorMst) {
+		this.instructorMst = instructorMst;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", title=" + title + ", instructor=" + instructor + "]";
+		return "CourseMst [courseMstId=" + courseMstId + ", title=" + title + ", instructorMst=" + instructorMst + "]";
 	}
 	
 }

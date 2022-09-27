@@ -14,21 +14,21 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="student")
-public class Student {
+@Table(name="STUDENT_MST")
+public class StudentMst {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "STUDENT_MST_ID")
+	private int studentMstId;
 
-	@Column(name = "first_name")
+	@Column(name = "FIRST_NAME")
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "LAST_NAME")
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	private String email;
 	
 	// for @ManyToMany mapping we use @JoinTable in both Entities
@@ -37,24 +37,25 @@ public class Student {
 		joinColumns = @JoinColumn(name="student_id")	,
 		inverseJoinColumns = @JoinColumn(name="course_id")
 	)
-	private List<Course> course;
+	private List<CourseMst> courseMstLst;
 	
-	public Student() {
+	public StudentMst() {
 		
 	}
 
-	public Student(String firstName, String lastName, String email) {
+	public StudentMst(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
-	public int getId() {
-		return id;
+	
+	public int getStudentMstId() {
+		return studentMstId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setStudentMstId(int studentMstId) {
+		this.studentMstId = studentMstId;
 	}
 
 	public String getFirstName() {
@@ -81,17 +82,17 @@ public class Student {
 		this.email = email;
 	}
 
-	public List<Course> getCourse() {
-		return course;
+	public List<CourseMst> getCourseMstLst() {
+		return courseMstLst;
 	}
 
-	public void setCourse(List<Course> course) {
-		this.course = course;
+	public void setCourseMstLst(List<CourseMst> courseMstLst) {
+		this.courseMstLst = courseMstLst;
 	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Student [studentMstId=" + studentMstId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 	
 }

@@ -11,44 +11,44 @@ import javax.persistence.Table;
 
 //annotate the class as an entity and map to db table
 @Entity
-@Table(name = "instructor_detail")
-public class InstructorDetail {
+@Table(name = "INSTRUCTOR_DTL")
+public class InstructorDtl {
 
 	// define the fields
 	// annotate the fields with db columns
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "INSTRUCTOR_DTL_ID")
+	private int instructorDtlId;
 
-	@Column(name = "youtube_channel")
+	@Column(name = "YOUTUBE_CHANNEL")
 	private String youtubeChannel;
 
-	@Column(name = "hobby")
+	@Column(name = "HOBBY")
 	private String hobby;
 
 	// create constructors
 
-	public InstructorDetail() {
+	public InstructorDtl() {
 
 	}
 
-	public InstructorDetail(String youtubeChannel, String hobby) {
+	public InstructorDtl(String youtubeChannel, String hobby) {
 		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
 	}
 
 	// generate getters and setter methods
 
-	public int getId() {
-		return id;
+	public int getInstructorDtlId() {
+		return instructorDtlId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setInstructorDtlId(int instructorDtlId) {
+		this.instructorDtlId = instructorDtlId;
 	}
-
+	
 	public String getYoutubeChannel() {
 		return youtubeChannel;
 	}
@@ -69,7 +69,7 @@ public class InstructorDetail {
 
 	@Override
 	public String toString() {
-		return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
+		return "InstructorDetail [instructorDtlId=" + instructorDtlId + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
 	}
 
 }

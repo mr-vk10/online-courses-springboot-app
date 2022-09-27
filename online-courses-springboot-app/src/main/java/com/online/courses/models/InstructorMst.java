@@ -15,55 +15,55 @@ import javax.persistence.Table;
 
 //annotate the class as an entity and map to db table
 @Entity
-@Table(name = "instructor")
-public class Instructor {
+@Table(name = "INSTRUCTOR_MST")
+public class InstructorMst {
 
 	// define the fields
 	// annotate the fields with db columns
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "INSTRUCTOR_MST_ID")
+	private int instructorMstId;
 
-	@Column(name = "first_name")
+	@Column(name = "FIRST_NAME")
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "LAST_NAME")
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	private String email;
 
 	// setup mapping to InstructorDetail entity
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "instructor_detail_id")
-	private InstructorDetail instructorDetail;
+	@JoinColumn(name = "INSTRUCTOR_DTL_ID")
+	private InstructorDtl instructorDtl;
 
 	// create constructors
 
-	public Instructor() {
+	public InstructorMst() {
 
 	}
 
-	public Instructor(String firstName, String lastName, String email, InstructorDetail instructorDetail) {
+	public InstructorMst(String firstName, String lastName, String email, InstructorDtl instructorDtl) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.instructorDetail = instructorDetail;
+		this.instructorDtl = instructorDtl;
 	}
 
 	// generate getters and setter methods
 
-	public int getId() {
-		return id;
+	public int getInstructorMstId() {
+		return instructorMstId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setInstructorMstId(int instructorMstId) {
+		this.instructorMstId = instructorMstId;
 	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -88,20 +88,19 @@ public class Instructor {
 		this.email = email;
 	}
 
-	public InstructorDetail getInstructorDetail() {
-		return instructorDetail;
+	public InstructorDtl getInstructorDtl() {
+		return instructorDtl;
 	}
 
-	public void setInstructorDetail(InstructorDetail instructorDetail) {
-		this.instructorDetail = instructorDetail;
+	public void setInstructorDtl(InstructorDtl instructorDtl) {
+		this.instructorDtl = instructorDtl;
 	}
-
+	
 	// generate toString method
 
 	@Override
 	public String toString() {
-		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", instructorDetail=" + instructorDetail + "]";
+		return "InstructorMst [instructorMstId=" + instructorMstId + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", instructorDtl=" + instructorDtl + "]";
 	}
-
 }

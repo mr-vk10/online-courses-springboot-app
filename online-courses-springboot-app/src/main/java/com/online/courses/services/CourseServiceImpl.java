@@ -5,35 +5,31 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.online.courses.dto.CourseFormBean;
-import com.online.courses.models.Course;
-import com.online.courses.repo.CourseRepo;
+import com.online.courses.models.CourseMst;
+import com.online.courses.repo.CourseMstRepo;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
 	@Autowired
-	private CourseRepo courseRepo;
+	private CourseMstRepo courseMstRepo;
 	
 	@Override
-	public List<Course> getCourses() {
-		return courseRepo.findAll();	
+	public List<CourseMst> getCourses() {
+		return courseMstRepo.findAll();	
 	}
 
 	@Override
-	public Optional<Course> getCourse(int courseId) {
+	public Optional<CourseMst> getCourse(int courseId) {
 		
-		return courseRepo.findById(courseId);
+		return courseMstRepo.findById(courseId);
 	}
 
 	@Override
-	public Course saveCourse(CourseFormBean courseFormBean) {
-		return courseRepo.save(courseFormBean.getCourse());
-		
+	public CourseMst saveCourse(CourseFormBean courseFormBean) {
+		return courseMstRepo.save(courseFormBean.getCourseMst());	
 	}
-	
-	
 
 }
