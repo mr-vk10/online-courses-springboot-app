@@ -24,7 +24,7 @@ public class InstructorMst {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "INSTRUCTOR_MST_ID")
-	private int instructorMstId;
+	private Long instructorMstId;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -56,11 +56,11 @@ public class InstructorMst {
 
 	// generate getters and setter methods
 
-	public int getInstructorMstId() {
+	public Long getInstructorMstId() {
 		return instructorMstId;
 	}
 
-	public void setInstructorMstId(int instructorMstId) {
+	public void setInstructorMstId(Long instructorMstId) {
 		this.instructorMstId = instructorMstId;
 	}
 	

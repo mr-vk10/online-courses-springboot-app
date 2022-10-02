@@ -10,10 +10,10 @@ import com.online.courses.models.ReviewMst;
 
 public class ReviewFormBean {
 	
-	private int reviewMstId; 
+	private Long reviewMstId; 
 	private String comment;
 	
-	private int studentMstId;
+	private Long studentMstId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -34,10 +34,10 @@ public class ReviewFormBean {
 		this.reviewMst = reviewMst;
 	}
 		
-	public int getReviewMstId() {
+	public Long getReviewMstId() {
 		return reviewMstId;
 	}
-	public void setReviewMstId(int reviewMstId) {
+	public void setReviewMstId(Long reviewMstId) {
 		this.reviewMstId = reviewMstId;
 	}
 	public String getComment() {
@@ -46,10 +46,10 @@ public class ReviewFormBean {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public int getStudentMstId() {
+	public Long getStudentMstId() {
 		return studentMstId;
 	}
-	public void setStudentMstId(int studentMstId) {
+	public void setStudentMstId(Long studentMstId) {
 		this.studentMstId = studentMstId;
 	}
 	public String getFirstName() {

@@ -22,7 +22,7 @@ public class CourseMst {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="COURSE_MST_ID")
-	int courseMstId;
+	Long courseMstId;
 	
 	@Column(name="TITLE")
 	String title;
@@ -41,11 +41,11 @@ public class CourseMst {
 		this.instructorMst = instructorMst;
 	}
 
-	public int getCourseMstId() {
+	public Long getCourseMstId() {
 		return courseMstId;
 	}
 
-	public void setCourseMstId(int courseMstId) {
+	public void setCourseMstId(Long courseMstId) {
 		this.courseMstId = courseMstId;
 	}
 

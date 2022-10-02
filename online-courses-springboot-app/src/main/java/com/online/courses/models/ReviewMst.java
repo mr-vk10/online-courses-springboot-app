@@ -17,16 +17,16 @@ public class ReviewMst {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="REVIEW_MST_ID")
-	private int reviewMstId; 
+	private Long reviewMstId; 
 	
 	@Column(name="COMMENT")
 	private String comment;
 	
 	@Column(name="COURSE_MST_ID")
-	private Integer courseMstId;
+	private Long courseMstId;
 	
 	@Column(name="STUDENT_MST_ID")
-	private Integer studentMstId;
+	private Long studentMstId;
 	
 	// As there is uni directional relationship between a review and course i.e.
 	// we cannot fetch a course from its review
@@ -36,17 +36,17 @@ public class ReviewMst {
 		
 	}
 
-	public ReviewMst(String comment, Integer courseMstId, Integer studentMstId) {
+	public ReviewMst(String comment, Long courseMstId, Long studentMstId) {
 		this.comment = comment;
 		this.courseMstId = courseMstId;
 		this.studentMstId = studentMstId;
 	}
 	
-	public int getReviewMstId() {
+	public Long getReviewMstId() {
 		return reviewMstId;
 	}
 
-	public void setReviewMstId(int reviewMstId) {
+	public void setReviewMstId(Long reviewMstId) {
 		this.reviewMstId = reviewMstId;
 	}
 
@@ -58,19 +58,19 @@ public class ReviewMst {
 		this.comment = comment;
 	}
 
-	public Integer getCourseMstId() {
+	public Long getCourseMstId() {
 		return courseMstId;
 	}
 
-	public void setCourseMstId(Integer courseMstId) {
+	public void setCourseMstId(Long courseMstId) {
 		this.courseMstId = courseMstId;
 	}
 
-	public Integer getStudentMstId() {
+	public Long getStudentMstId() {
 		return studentMstId;
 	}
 
-	public void setStudentMstId(Integer studentMstId) {
+	public void setStudentMstId(Long studentMstId) {
 		this.studentMstId = studentMstId;
 	}
 

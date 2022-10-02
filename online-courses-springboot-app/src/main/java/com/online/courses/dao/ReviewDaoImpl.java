@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.xml.transform.Transformer;
 
 import org.hibernate.SQLQuery;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.stereotype.Repository;
@@ -47,7 +48,13 @@ public class ReviewDaoImpl implements ReviewDao{
 			
 			// List<ReviewFormBean> reviews = execQuery.unwrap(org.hibernate.query.Query.class).getResultList();	
 			
-			reviews = execQuery.unwrap(org.hibernate.query.Query.class)
+			reviews = execQuery.unwrap(NativeQuery.class)
+								.addScalar("reviewMstId",StandardBasicTypes.LONG)
+								.addScalar("comment",StandardBasicTypes.STRING)
+								.addScalar("studentMstId",StandardBasicTypes.LONG)
+								.addScalar("email",StandardBasicTypes.STRING)
+								.addScalar("firstName",StandardBasicTypes.STRING)
+								.addScalar("lastName",StandardBasicTypes.STRING)
 								.setResultTransformer(Transformers.aliasToBean(ReviewFormBean.class))
 								.getResultList();
 		}catch(Exception e) {

@@ -20,7 +20,7 @@ public class InstructorDtl {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "INSTRUCTOR_DTL_ID")
-	private int instructorDtlId;
+	private Long instructorDtlId;
 
 	@Column(name = "YOUTUBE_CHANNEL")
 	private String youtubeChannel;
@@ -41,11 +41,11 @@ public class InstructorDtl {
 
 	// generate getters and setter methods
 
-	public int getInstructorDtlId() {
+	public Long getInstructorDtlId() {
 		return instructorDtlId;
 	}
 
-	public void setInstructorDtlId(int instructorDtlId) {
+	public void setInstructorDtlId(Long instructorDtlId) {
 		this.instructorDtlId = instructorDtlId;
 	}
 	
