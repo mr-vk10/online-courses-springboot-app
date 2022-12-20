@@ -10,8 +10,8 @@ public interface ReviewService {
 	
 	ReviewMst addCourseReview(CourseFormBean courseFormBean);
 	
-	ReviewFormBean getCourseReviews(int courseId);
+	ReviewFormBean getCourseReviews(long courseId);
 	
-	List<ReviewFormBean> fetchStudentReviews(int studentId) throws Exception;
+	List<ReviewFormBean> fetchStudentReviews(long studentId) throws Exception;
 
 }

@@ -22,23 +22,27 @@ public class CourseMst {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="COURSE_MST_ID")
-	Long courseMstId;
+	private Long courseMstId;
 	
 	@Column(name="TITLE")
-	String title;
+	private String title;
 	
 	// Here we are not applying Cascade DELETE. i.e. if you deleted a course, donot delete the instructor
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="INSTRUCTOR_MST_ID")
 	InstructorMst instructorMst;
+	
+	@Column(name = "ACTIVE_FLAG")
+	private Long activeFlag;
 		
 	public CourseMst() {
 		
 	}
 
-	public CourseMst(String title, InstructorMst instructorMst) {
+	public CourseMst(String title, InstructorMst instructorMst, Long activeFlag) {
 		this.title = title;
 		this.instructorMst = instructorMst;
+		this.activeFlag = activeFlag;
 	}
 
 	public Long getCourseMstId() {
@@ -64,10 +68,19 @@ public class CourseMst {
 	public void setInstructorMst(InstructorMst instructorMst) {
 		this.instructorMst = instructorMst;
 	}
+	
+	public Long getActiveFlag() {
+        return activeFlag;
+    }
 
-	@Override
-	public String toString() {
-		return "CourseMst [courseMstId=" + courseMstId + ", title=" + title + ", instructorMst=" + instructorMst + "]";
-	}
+    public void setActiveFlag(Long activeFlag) {
+        this.activeFlag = activeFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseMst [courseMstId=" + courseMstId + ", title=" + title + ", instructorMst=" + instructorMst
+                + ", activeFlag=" + activeFlag + "]";
+    }
 	
 }

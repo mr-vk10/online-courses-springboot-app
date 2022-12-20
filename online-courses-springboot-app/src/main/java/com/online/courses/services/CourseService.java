@@ -10,7 +10,7 @@ public interface CourseService {
 	
 	List<CourseMst> getCourses();
 	
-	Optional<CourseMst> getCourse(int courseId);
+	Optional<CourseMst> getCourse(long courseId);
 	
 	CourseMst saveCourse(CourseFormBean courseFormBean);
 

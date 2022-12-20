@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.online.courses.models.InstructorDtl;
 
 @Repository
-public interface InstructorDtlRepo extends JpaRepository<InstructorDtl, Integer> {
+public interface InstructorDtlRepo extends JpaRepository<InstructorDtl, Long> {
 
 }

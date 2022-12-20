@@ -24,7 +24,7 @@ public class ReviewDaoImpl implements ReviewDao{
 	private EntityManager entityManager;
 
 	@Override
-	public List<ReviewFormBean> fetchStudentReviews (int studentId) throws Exception{
+	public List<ReviewFormBean> fetchStudentReviews (long studentId) throws Exception{
 		List<ReviewFormBean> reviews;
 		try {
 			StringBuilder query = new StringBuilder();

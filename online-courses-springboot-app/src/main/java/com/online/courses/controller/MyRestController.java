@@ -39,7 +39,7 @@ public class MyRestController {
 	}
 	
 	@GetMapping("/courses/{courseId}")
-	public Optional<CourseMst> getCourse(@PathVariable int courseId) {
+	public Optional<CourseMst> getCourse(@PathVariable long courseId) {
 		return courseService.getCourse(courseId);
 	}
 	
@@ -54,12 +54,12 @@ public class MyRestController {
 	}
 	
 	@GetMapping("/review/course/{courseId}")
-	public ReviewFormBean getCourseReviews(@PathVariable int courseId) {
+	public ReviewFormBean getCourseReviews(@PathVariable long courseId) {
 		return reviewService.getCourseReviews(courseId);
 	}
 	
 	@GetMapping("/review/student/{studentId}")
-	public List<ReviewFormBean> getStudentReviews(@PathVariable int studentId) throws Exception{
+	public List<ReviewFormBean> getStudentReviews(@PathVariable long studentId) throws Exception{
 		System.out.println("Here");
 		return reviewService.fetchStudentReviews(studentId);
 	}

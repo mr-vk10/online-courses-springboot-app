@@ -39,6 +39,9 @@ public class InstructorMst {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "INSTRUCTOR_DTL_ID")
 	private InstructorDtl instructorDtl;
+	
+	@Column(name = "ACTIVE_FLAG")
+    private Long activeFlag;
 
 	// create constructors
 
@@ -46,12 +49,13 @@ public class InstructorMst {
 
 	}
 
-	public InstructorMst(String firstName, String lastName, String email, InstructorDtl instructorDtl) {
+	public InstructorMst(String firstName, String lastName, String email, InstructorDtl instructorDtl, Long activeFlag) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.instructorDtl = instructorDtl;
+		this.activeFlag = activeFlag;
 	}
 
 	// generate getters and setter methods
@@ -96,11 +100,21 @@ public class InstructorMst {
 		this.instructorDtl = instructorDtl;
 	}
 	
-	// generate toString method
+	public Long getActiveFlag() {
+        return activeFlag;
+    }
 
-	@Override
-	public String toString() {
-		return "InstructorMst [instructorMstId=" + instructorMstId + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", instructorDtl=" + instructorDtl + "]";
-	}
+    public void setActiveFlag(Long activeFlag) {
+        this.activeFlag = activeFlag;
+    }
+	
+	// generate toString method
+    
+    @Override
+    public String toString() {
+        return "InstructorMst [instructorMstId=" + instructorMstId + ", firstName=" + firstName + ", lastName="
+                + lastName + ", email=" + email + ", instructorDtl=" + instructorDtl + ", activeFlag=" + activeFlag
+                + "]";
+    }
+	
 }

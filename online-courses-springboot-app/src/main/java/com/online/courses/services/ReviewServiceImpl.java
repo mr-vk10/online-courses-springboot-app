@@ -30,7 +30,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ReviewFormBean getCourseReviews(int courseId) {
+	public ReviewFormBean getCourseReviews(long courseId) {
 		
 		ReviewFormBean reviews = new ReviewFormBean();
 		reviews.setReview(reviewMstRepo.findByCourseMstId(courseId));
@@ -39,7 +39,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewFormBean> fetchStudentReviews(int studentId) throws Exception {
+	public List<ReviewFormBean> fetchStudentReviews(long studentId) throws Exception {
 		
 		return reviewDao.fetchStudentReviews(studentId);
 	}

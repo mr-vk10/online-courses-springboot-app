@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.online.courses.models.ReviewMst;
 
 @Repository
-public interface ReviewMstRepo extends JpaRepository<ReviewMst, Integer> {
+public interface ReviewMstRepo extends JpaRepository<ReviewMst, Long> {
 	
-	List<ReviewMst> findByCourseMstId(Integer courseMstId);
+	List<ReviewMst> findByCourseMstId(Long courseMstId);
 
 }

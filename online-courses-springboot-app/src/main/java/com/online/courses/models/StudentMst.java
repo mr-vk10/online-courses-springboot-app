@@ -39,14 +39,18 @@ public class StudentMst {
 	)
 	private List<CourseMst> courseMstLst;
 	
+	@Column(name = "ACTIVE_FLAG")
+    private Long activeFlag;
+	
 	public StudentMst() {
 		
 	}
 
-	public StudentMst(String firstName, String lastName, String email) {
+	public StudentMst(String firstName, String lastName, String email, Long activeFlag) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.activeFlag = activeFlag;
 	}
 
 	
@@ -89,10 +93,20 @@ public class StudentMst {
 	public void setCourseMstLst(List<CourseMst> courseMstLst) {
 		this.courseMstLst = courseMstLst;
 	}
-
-	@Override
-	public String toString() {
-		return "Student [studentMstId=" + studentMstId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}
 	
+	public Long getActiveFlag() {
+        return activeFlag;
+    }
+
+    public void setActiveFlag(Long activeFlag) {
+        this.activeFlag = activeFlag;
+    }
+
+    // generate toString method
+    
+    @Override
+    public String toString() {
+        return "StudentMst [studentMstId=" + studentMstId + ", firstName=" + firstName + ", lastName=" + lastName
+                + ", email=" + email + ", courseMstLst=" + courseMstLst + ", activeFlag=" + activeFlag + "]";
+    }	
 }

@@ -27,6 +27,9 @@ public class InstructorDtl {
 
 	@Column(name = "HOBBY")
 	private String hobby;
+	
+	@Column(name = "ACTIVE_FLAG")
+    private Long activeFlag;
 
 	// create constructors
 
@@ -34,9 +37,10 @@ public class InstructorDtl {
 
 	}
 
-	public InstructorDtl(String youtubeChannel, String hobby) {
+	public InstructorDtl(String youtubeChannel, String hobby, Long activeFlag) {
 		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
+		this.activeFlag = activeFlag;
 	}
 
 	// generate getters and setter methods
@@ -64,12 +68,21 @@ public class InstructorDtl {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
+	
+	public Long getActiveFlag() {
+        return activeFlag;
+    }
+
+    public void setActiveFlag(Long activeFlag) {
+        this.activeFlag = activeFlag;
+    }
 
 	// generate toString method
 
-	@Override
-	public String toString() {
-		return "InstructorDetail [instructorDtlId=" + instructorDtlId + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
-	}
+    @Override
+    public String toString() {
+        return "InstructorDtl [instructorDtlId=" + instructorDtlId + ", youtubeChannel=" + youtubeChannel + ", hobby="
+                + hobby + ", activeFlag=" + activeFlag + "]";
+    }
 
 }

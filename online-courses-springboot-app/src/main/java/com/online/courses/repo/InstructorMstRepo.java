@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.online.courses.models.InstructorMst;
 
 @Repository
-public interface InstructorMstRepo extends JpaRepository<InstructorMst, Integer> {
+public interface InstructorMstRepo extends JpaRepository<InstructorMst, Long> {
 
 }
