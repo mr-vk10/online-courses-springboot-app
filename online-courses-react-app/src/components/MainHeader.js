@@ -11,9 +11,9 @@ const MainHeader = () => {
               className={(navData) =>
                 navData.isActive ? classes.active : "none"
               }
-              to="/welcome"
+              to="/all-courses"
             >
-              Welcome
+              All Courses
             </NavLink>
           </li>
 
@@ -22,9 +22,9 @@ const MainHeader = () => {
               className={(navData) =>
                 navData.isActive ? classes.active : "none"
               }
-              to="/products"
+              to="/add-courses"
             >
-              Products
+              Add Courses
             </NavLink>
           </li>
         </ul>

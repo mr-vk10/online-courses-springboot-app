@@ -1,24 +1,25 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Welcome from "./pages/Welcome";
-import Products from "./pages/Products";
-import MainHeader from "./components/MainHeader";
-import ProductDetail from "./pages/ProductDetail";
+import Courses from "./pages/Courses";
+import AddCourses from "./pages/AddCourses";
+import RootLayout from "./pages/RootLayout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/all-courses", element: <Courses /> },
+      { path: "/add-courses", element: <AddCourses /> },
+    ],
+  },
+]);
 
 function App() {
   return (
     <div>
-      <MainHeader />
       <main>
-        <Routes>
-          <Route exact path="/welcome" element={<Welcome />} />
-          <Route exact path="/products" element={<Products />} />
-          <Route
-            exact
-            path="/products/:productId"
-            element={<ProductDetail />}
-          />
-        </Routes>
+        <RouterProvider router={router} />
       </main>
     </div>
   );
