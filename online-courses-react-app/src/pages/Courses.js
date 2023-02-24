@@ -1,13 +1,9 @@
+import { useLoaderData } from "react-router-dom";
+
 const Courses = () => {
-  function fetchCoursesHandler() {
-    fetch("http://localhost:8000/courses")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }
+  function fetchCoursesHandler() {}
+
+  const data = useLoaderData();
 
   return (
     <section>
