@@ -24,9 +24,6 @@ public class CourseMst {
 	@Column(name="COURSE_MST_ID")
 	private Long courseMstId;
 	
-	@Column(name="TITLE")
-	private String title;
-	
 	// Here we are not applying Cascade DELETE. i.e. if you deleted a course, donot delete the instructor
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="INSTRUCTOR_MST_ID")
@@ -39,8 +36,7 @@ public class CourseMst {
 		
 	}
 
-	public CourseMst(String title, InstructorMst instructorMst, Long activeFlag) {
-		this.title = title;
+	public CourseMst(InstructorMst instructorMst, Long activeFlag) {
 		this.instructorMst = instructorMst;
 		this.activeFlag = activeFlag;
 	}
@@ -51,14 +47,6 @@ public class CourseMst {
 
 	public void setCourseMstId(Long courseMstId) {
 		this.courseMstId = courseMstId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public InstructorMst getInstructorMst() {
@@ -79,7 +67,7 @@ public class CourseMst {
 
     @Override
     public String toString() {
-        return "CourseMst [courseMstId=" + courseMstId + ", title=" + title + ", instructorMst=" + instructorMst
+        return "CourseMst [courseMstId=" + courseMstId + ", instructorMst=" + instructorMst
                 + ", activeFlag=" + activeFlag + "]";
     }
 	

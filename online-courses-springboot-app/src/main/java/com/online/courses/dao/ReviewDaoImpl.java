@@ -1,21 +1,18 @@
 package com.online.courses.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.xml.transform.Transformer;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.stereotype.Repository;
 
 import com.online.courses.dto.ReviewFormBean;
-import com.online.courses.models.ReviewMst;
 
 @Repository
 public class ReviewDaoImpl implements ReviewDao{
@@ -25,7 +22,7 @@ public class ReviewDaoImpl implements ReviewDao{
 
 	@Override
 	public List<ReviewFormBean> fetchStudentReviews (long studentId) throws Exception{
-		List<ReviewFormBean> reviews;
+		List<ReviewFormBean> reviews = new ArrayList<ReviewFormBean>();
 		try {
 			StringBuilder query = new StringBuilder();
 			

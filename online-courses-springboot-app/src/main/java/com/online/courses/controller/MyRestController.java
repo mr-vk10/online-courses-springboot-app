@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.online.courses.dto.CourseFormBean;
+import com.online.courses.dto.CoursesDetailFormBean;
 import com.online.courses.dto.ReviewFormBean;
 import com.online.courses.models.CourseMst;
 import com.online.courses.models.ReviewMst;
@@ -33,10 +34,17 @@ public class MyRestController {
 		return "Hello world time on server is: "+LocalDateTime.now();
 	}
 	
+	/*
 	@GetMapping("/courses")
 	public List<CourseMst> getCourses() {
 		return courseService.getCourses();
 	}
+	*/
+	
+	@GetMapping("/courses")
+    public List<CoursesDetailFormBean> getCourses() throws Exception{
+        return courseService.getCourses();
+    }
 	
 	@GetMapping("/courses/{courseId}")
 	public Optional<CourseMst> getCourse(@PathVariable long courseId) {

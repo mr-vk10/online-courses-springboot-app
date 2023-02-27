@@ -1,12 +1,10 @@
 package com.online.courses.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //annotate the class as an entity and map to db table
@@ -21,7 +19,19 @@ public class InstructorDtl {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "INSTRUCTOR_DTL_ID")
 	private Long instructorDtlId;
+	
+	@Column(name = "INSTRUCTOR_MST_ID")
+    private Long instructorMstId;
 
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+
+    @Column(name = "LAST_NAME")
+    private String lastName;
+
+    @Column(name = "EMAIL")
+    private String email;
+	
 	@Column(name = "YOUTUBE_CHANNEL")
 	private String youtubeChannel;
 
@@ -52,7 +62,39 @@ public class InstructorDtl {
 	public void setInstructorDtlId(Long instructorDtlId) {
 		this.instructorDtlId = instructorDtlId;
 	}
-	
+		
+	public Long getInstructorMstId() {
+        return instructorMstId;
+    }
+
+    public void setInstructorMstId(Long instructorMstId) {
+        this.instructorMstId = instructorMstId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 	public String getYoutubeChannel() {
 		return youtubeChannel;
 	}
@@ -77,12 +119,12 @@ public class InstructorDtl {
         this.activeFlag = activeFlag;
     }
 
-	// generate toString method
-
+    // generate toString method
     @Override
     public String toString() {
-        return "InstructorDtl [instructorDtlId=" + instructorDtlId + ", youtubeChannel=" + youtubeChannel + ", hobby="
-                + hobby + ", activeFlag=" + activeFlag + "]";
-    }
+        return "InstructorDtl [instructorDtlId=" + instructorDtlId + ", instructorMstId=" + instructorMstId
+                + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", youtubeChannel="
+                + youtubeChannel + ", hobby=" + hobby + ", activeFlag=" + activeFlag + "]";
+    }   
 
 }

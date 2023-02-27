@@ -1,0 +1,11 @@
+package com.online.courses.dao;
+
+import java.util.List;
+
+import com.online.courses.dto.CoursesDetailFormBean;
+
+public interface CourseDao {
+    
+    List<CoursesDetailFormBean> getCourses() throws Exception;
+
+}
