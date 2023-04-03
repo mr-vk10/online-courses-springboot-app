@@ -1,7 +1,6 @@
 package com.online.courses.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.online.courses.dto.CourseFormBean;
 import com.online.courses.dto.CoursesDetailFormBean;
@@ -13,7 +12,7 @@ public interface CourseService {
     
 	List<CoursesDetailFormBean> getCourses() throws Exception;
 	
-	Optional<CourseMst> getCourse(long courseId);
+	CoursesDetailFormBean getCourse(long courseId) throws Exception;
 	
 	CourseMst saveCourse(CourseFormBean courseFormBean);
 

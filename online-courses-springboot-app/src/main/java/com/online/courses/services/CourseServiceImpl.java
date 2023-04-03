@@ -1,7 +1,6 @@
 package com.online.courses.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.online.courses.dao.CourseDao;
 import com.online.courses.dto.CourseFormBean;
 import com.online.courses.dto.CoursesDetailFormBean;
+import com.online.courses.exceptions.CourseNotFoundException;
 import com.online.courses.models.CourseMst;
+import com.online.courses.repo.CourseDtlRepo;
 import com.online.courses.repo.CourseMstRepo;
 
 @Service
@@ -17,6 +18,9 @@ public class CourseServiceImpl implements CourseService {
 
 	@Autowired
 	private CourseMstRepo courseMstRepo;
+	
+	@Autowired
+	private CourseDtlRepo courseDtlRepo;
 	
 	@Autowired
     private CourseDao courseDao;
@@ -29,13 +33,36 @@ public class CourseServiceImpl implements CourseService {
 	
 	@Override
     public List<CoursesDetailFormBean> getCourses() throws Exception {
-        return courseDao.getCourses(); 
+	    
+	    CoursesDetailFormBean coursesDetailFormBean = new CoursesDetailFormBean();
+        return courseDao.getCourses(coursesDetailFormBean); 
     }
 
 	@Override
-	public Optional<CourseMst> getCourse(long courseId) {
+	public CoursesDetailFormBean getCourse(long courseId) throws Exception{
 		
-		return courseMstRepo.findById(courseId);
+	    /* 
+	    Optional<CourseMst> courseMst = courseMstRepo.findById(courseId);
+	    if(!courseMst.isPresent()) {
+	        throw new CourseNotFoundException("Course with courseId: "+courseId+" not found.");
+	    }
+	    */
+	    
+	    // BeanUtils.copyProperties(course, course);
+	    
+	    CoursesDetailFormBean coursesDetailFormBean = new CoursesDetailFormBean();
+        coursesDetailFormBean.setCourseMstId(courseId);
+	    List<CoursesDetailFormBean> courses = null;
+        try {
+            courses = courseDao.getCourses(coursesDetailFormBean);
+            if(courses==null || courses.isEmpty()) {
+                throw new CourseNotFoundException("Course with courseId: "+courseId+" not found.");
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+	    
+		return courses.get(0);
 	}
 
 	@Override

@@ -1,7 +1,6 @@
  package com.online.courses.controller;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +46,7 @@ public class MyRestController {
     }
 	
 	@GetMapping("/courses/{courseId}")
-	public Optional<CourseMst> getCourse(@PathVariable long courseId) {
+	public CoursesDetailFormBean getCourse(@PathVariable long courseId) throws Exception{
 		return courseService.getCourse(courseId);
 	}
 	
