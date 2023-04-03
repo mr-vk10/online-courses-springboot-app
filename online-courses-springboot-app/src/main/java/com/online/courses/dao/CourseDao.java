@@ -6,6 +6,6 @@ import com.online.courses.dto.CoursesDetailFormBean;
 
 public interface CourseDao {
     
-    List<CoursesDetailFormBean> getCourses() throws Exception;
+    List<CoursesDetailFormBean> getCourses(CoursesDetailFormBean coursesDetailFormBean) throws Exception;
 
 }

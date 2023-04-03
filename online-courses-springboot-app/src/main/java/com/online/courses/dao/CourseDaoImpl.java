@@ -20,7 +20,7 @@ public class CourseDaoImpl implements CourseDao {
     private EntityManager entityManager;
     
     @Override
-    public List<CoursesDetailFormBean> getCourses() throws Exception {
+    public List<CoursesDetailFormBean> getCourses(CoursesDetailFormBean coursesDetailFormBean) throws Exception {
         
         List<CoursesDetailFormBean> courses = null;
         try {
@@ -50,7 +50,15 @@ public class CourseDaoImpl implements CourseDao {
             query.append(" AND instructorMst.ACTIVE_FLAG = 1 ");
             query.append(" AND instructorDtl.ACTIVE_FLAG = 1 ");
             
+            if(coursesDetailFormBean.getCourseMstId()!=null) {
+                query.append(" AND courseMst.COURSE_MST_ID = :courseMstId ");
+            }
+            
             Query execQuery = entityManager.createNativeQuery(query.toString());
+            
+            if(coursesDetailFormBean.getCourseMstId()!=null) {
+                execQuery.setParameter("courseMstId", coursesDetailFormBean.getCourseMstId());
+            }
             
             courses = execQuery.unwrap(NativeQuery.class)
                                .addScalar("courseDtlId", StandardBasicTypes.LONG)
