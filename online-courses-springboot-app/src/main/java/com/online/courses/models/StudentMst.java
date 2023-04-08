@@ -13,12 +13,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="STUDENT_MST")
 public class StudentMst {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "STUDENT_MST_ID")
 	private Long studentMstId;
 

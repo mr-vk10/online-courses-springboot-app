@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 //annotate the class as an entity and map to db table
 @Entity
 @Table(name = "INSTRUCTOR_MST")
@@ -15,8 +17,9 @@ public class InstructorMst {
 	// define the fields
 	// annotate the fields with db columns
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "INSTRUCTOR_MST_ID")
 	private Long instructorMstId;
 

@@ -10,12 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="REVIEW_MST")
 public class ReviewMst {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name="REVIEW_MST_ID")
 	private Long reviewMstId; 
 	
