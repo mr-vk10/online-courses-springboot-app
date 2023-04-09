@@ -14,8 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class CourseDtl {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
     @Column(name="COURSE_DTL_ID")
     private Long courseDtlId;
     

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.online.courses.dto.AddCourseRequest;
 import com.online.courses.dto.CourseFormBean;
 import com.online.courses.dto.CoursesDetailFormBean;
 import com.online.courses.dto.ReviewFormBean;
-import com.online.courses.models.CourseMst;
 import com.online.courses.models.ReviewMst;
 import com.online.courses.services.CourseService;
 import com.online.courses.services.ReviewService;
@@ -51,8 +51,8 @@ public class MyRestController {
 	}
 	
 	@PostMapping("/courses")
-	public CourseMst saveCourse(@RequestBody CourseFormBean courseFormBean) {
-		return courseService.saveCourse(courseFormBean);
+	public AddCourseRequest addNewCourse(@RequestBody AddCourseRequest addCourseRequest) {
+		return courseService.addNewCourse(addCourseRequest);
 	}
 	
 	@PostMapping("/review")

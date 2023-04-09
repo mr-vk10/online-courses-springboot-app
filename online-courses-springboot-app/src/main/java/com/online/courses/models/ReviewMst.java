@@ -17,8 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class ReviewMst {
 	
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
 	@Column(name="REVIEW_MST_ID")
 	private Long reviewMstId; 
 	

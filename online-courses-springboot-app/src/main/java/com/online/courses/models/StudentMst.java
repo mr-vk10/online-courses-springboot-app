@@ -20,8 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class StudentMst {
 	
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
 	@Column(name = "STUDENT_MST_ID")
 	private Long studentMstId;
 

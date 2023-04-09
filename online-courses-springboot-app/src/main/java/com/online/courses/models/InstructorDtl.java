@@ -18,8 +18,7 @@ public class InstructorDtl {
 	// annotate the fields with db columns
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue
 	@Column(name = "INSTRUCTOR_DTL_ID")
 	private Long instructorDtlId;
 	

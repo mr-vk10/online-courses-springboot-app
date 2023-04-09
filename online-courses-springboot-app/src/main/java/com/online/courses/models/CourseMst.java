@@ -22,15 +22,18 @@ import org.hibernate.annotations.GenericGenerator;
 public class CourseMst {
 	
 	@Id
-	@GeneratedValue(generator = "uuid2")
-	@GenericGenerator(name="uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+	@GeneratedValue
 	@Column(name="COURSE_MST_ID")
 	private Long courseMstId;
 	
 	// Here we are not applying Cascade DELETE. i.e. if you deleted a course, donot delete the instructor
+	/*
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="INSTRUCTOR_MST_ID")
 	InstructorMst instructorMst;
+	*/
+	@Column(name="INSTRUCTOR_MST_ID")
+	private Long instructorMstId;
 	
 	@Column(name = "ACTIVE_FLAG")
 	private Long activeFlag;
@@ -38,40 +41,36 @@ public class CourseMst {
 	public CourseMst() {
 		
 	}
-
-	public CourseMst(InstructorMst instructorMst, Long activeFlag) {
-		this.instructorMst = instructorMst;
-		this.activeFlag = activeFlag;
-	}
-
-	public Long getCourseMstId() {
+	public CourseMst(Long courseMstId, Long instructorMstId, Long activeFlag) {
+        super();
+        this.courseMstId = courseMstId;
+        this.instructorMstId = instructorMstId;
+        this.activeFlag = activeFlag;
+    }
+    public Long getCourseMstId() {
 		return courseMstId;
 	}
 
 	public void setCourseMstId(Long courseMstId) {
 		this.courseMstId = courseMstId;
-	}
-
-	public InstructorMst getInstructorMst() {
-		return instructorMst;
-	}
-
-	public void setInstructorMst(InstructorMst instructorMst) {
-		this.instructorMst = instructorMst;
-	}
-	
-	public Long getActiveFlag() {
+	}	
+	public Long getInstructorMstId() {
+        return instructorMstId;
+    }
+    public void setInstructorMstId(Long instructorMstId) {
+        this.instructorMstId = instructorMstId;
+    }
+    public Long getActiveFlag() {
         return activeFlag;
     }
-
     public void setActiveFlag(Long activeFlag) {
         this.activeFlag = activeFlag;
     }
 
     @Override
     public String toString() {
-        return "CourseMst [courseMstId=" + courseMstId + ", instructorMst=" + instructorMst
-                + ", activeFlag=" + activeFlag + "]";
+        return "CourseMst [courseMstId=" + courseMstId + ", instructorMstId=" + instructorMstId + ", activeFlag="
+                + activeFlag + "]";
     }
-	
+   	
 }
