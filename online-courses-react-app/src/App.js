@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Courses from "./pages/Courses";
 import AddCourses from "./pages/AddCourses";
 import RootLayout from "./pages/RootLayout";
+import LoginPage from "./pages/authentication/LoginPage";
+import SignUpPage from "./pages/authentication/SignUpPage";
+import AuthRootLayout from "./pages/authentication/AuthRootLayout";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,14 @@ const router = createBrowserRouter([
         },
       },
       { path: "/add-courses", element: <AddCourses /> },
+    ],
+  },
+  {
+    path: "/",
+    element: <AuthRootLayout />,
+    children: [
+      { path: "/login", element: <LoginPage /> },
+      { path: "/signUp", element: <SignUpPage /> },
     ],
   },
 ]);

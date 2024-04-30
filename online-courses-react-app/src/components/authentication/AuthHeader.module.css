@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #044599;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.logo {
+  flex: 1;
+}
+
+.logo img {
+  max-width: 100px;
+}
+
+.header nav {
+  height: 100%;
+
+  /* added */
+  display: flex;
+  gap: 20px;
+}
+
+.header ul {
+  list-style: none;
+  padding: 0;
+  margin: auto;
+}
+
+.header li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.header a {
+  text-decoration: none;
+
+  /* added */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  /* padding-bottom: 0.25rem; */
+  /* border-bottom: 4px solid var(--color-primary-800); */
+  background-color: #378039;
+  color: white;
+}
+
+/* .authButtons {
+  display: flex;
+  gap: 20px;
+} */
+
+/* .authButtons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+/* .authButtons .loginBtn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.authButtons .signupBtn {
+  background-color: #3498db;
+  color: white;
+} */
+
+@media only screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .header nav {
+    margin-top: 10px;
+  }
+}
