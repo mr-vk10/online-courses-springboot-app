@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Courses from "./pages/Courses";
 import AddCourses from "./pages/AddCourses";
-import RootLayout from "./pages/RootLayout";
+import AdminRootLayout from "./pages/admin/AdminRootLayout";
 import LoginPage from "./pages/authentication/LoginPage";
 import SignUpPage from "./pages/authentication/SignUpPage";
 import AuthRootLayout from "./pages/authentication/AuthRootLayout";
@@ -10,7 +10,15 @@ import AuthRootLayout from "./pages/authentication/AuthRootLayout";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <AuthRootLayout />,
+    children: [
+      { path: "/login", element: <LoginPage /> },
+      { path: "/signUp", element: <SignUpPage /> },
+    ],
+  },
+  {
+    path: "/",
+    element: <AdminRootLayout />,
     children: [
       {
         path: "/all-courses",
@@ -28,14 +36,6 @@ const router = createBrowserRouter([
         },
       },
       { path: "/add-courses", element: <AddCourses /> },
-    ],
-  },
-  {
-    path: "/",
-    element: <AuthRootLayout />,
-    children: [
-      { path: "/login", element: <LoginPage /> },
-      { path: "/signUp", element: <SignUpPage /> },
     ],
   },
 ]);

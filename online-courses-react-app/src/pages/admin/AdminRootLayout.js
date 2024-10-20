@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import MainHeader from "../components/MainHeader";
+import AdminHeader from "../../components/admin/AdminHeader";
 // import classes from "./RootLayout.module.css";
 
-function RootLayout() {
+function AdminRootLayout() {
   return (
     <>
-      <MainHeader />
+      <AdminHeader />
       {/* <main className={classes.content}> */}
       <main>
         <Outlet />
@@ -14,4 +14,4 @@ function RootLayout() {
   );
 }
 
-export default RootLayout;
+export default AdminRootLayout;

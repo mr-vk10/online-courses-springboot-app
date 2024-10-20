@@ -56,28 +56,6 @@
   color: white;
 }
 
-/* .authButtons {
-  display: flex;
-  gap: 20px;
-} */
-
-/* .authButtons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-
-/* .authButtons .loginBtn {
-  background-color: #4caf50;
-  color: white;
-}
-
-.authButtons .signupBtn {
-  background-color: #3498db;
-  color: white;
-} */
-
 @media only screen and (max-width: 600px) {
   .header {
     flex-direction: column;

@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #044599;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.logo {
+  flex: 1;
+}
+
+.logo img {
+  max-width: 100px;
+}
+
+.logout button {
+  padding: 10px 20px;
+  margin-top: 5px;
+  background-color: #ff0000; /* Red color for logout button */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  /* transition: background-color 0.3s ease; */
+}
+
+.logout button:hover {
+  background-color: darkred; /* Darker red color on hover */
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+}
