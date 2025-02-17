@@ -1,5 +1,17 @@
 package com.online.courses.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigInteger;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CoursesDetailFormBean {
 
     private Long courseDtlId;
@@ -33,134 +45,12 @@ public class CoursesDetailFormBean {
     private String youtubeChannel;
 
     private String hobby;
-
-    public Long getCourseDtlId() {
-        return courseDtlId;
-    }
-
-    public void setCourseDtlId(Long courseDtlId) {
-        this.courseDtlId = courseDtlId;
-    }
-
-    public Long getCourseMstId() {
-        return courseMstId;
-    }
-
-    public void setCourseMstId(Long courseMstId) {
-        this.courseMstId = courseMstId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCourseDesc() {
-        return courseDesc;
-    }
-
-    public void setCourseDesc(String courseDesc) {
-        this.courseDesc = courseDesc;
-    }
-
-    public Long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Long duration) {
-        this.duration = duration;
-    }
-
-    public Long getNoOfLec() {
-        return noOfLec;
-    }
-
-    public void setNoOfLec(Long noOfLec) {
-        this.noOfLec = noOfLec;
-    }
-
-    public Long getLevel() {
-        return level;
-    }
-
-    public void setLevel(Long level) {
-        this.level = level;
-    }
     
-    public String getLevelStr() {
-        return levelStr;
-    }
-
-    public void setLevelStr(String levelStr) {
-        this.levelStr = levelStr;
-    }
-
-    public Long getPrice() {
-        return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
-    }
-
-    public Long getInstructorDtlId() {
-        return instructorDtlId;
-    }
-
-    public void setInstructorDtlId(Long instructorDtlId) {
-        this.instructorDtlId = instructorDtlId;
-    }
-
-    public Long getInstructorMstId() {
-        return instructorMstId;
-    }
-
-    public void setInstructorMstId(Long instructorMstId) {
-        this.instructorMstId = instructorMstId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getYoutubeChannel() {
-        return youtubeChannel;
-    }
-
-    public void setYoutubeChannel(String youtubeChannel) {
-        this.youtubeChannel = youtubeChannel;
-    }
-
-    public String getHobby() {
-        return hobby;
-    }
-
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
-    }
+    private BigInteger pageNo; 
     
+    private BigInteger pageSize;
     
+    private List<CoursesDetailFormBean> coursesDetailList;
+
+    private int totalCourses;
 }

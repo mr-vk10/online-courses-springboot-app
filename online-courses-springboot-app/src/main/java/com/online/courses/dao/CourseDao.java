@@ -8,4 +8,5 @@ public interface CourseDao {
     
     List<CoursesDetailFormBean> getCourses(CoursesDetailFormBean coursesDetailFormBean) throws Exception;
 
+    int getTotalCourses(CoursesDetailFormBean coursesDetailFormBean) throws Exception;
 }

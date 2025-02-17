@@ -33,8 +33,8 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewFormBean getCourseReviews(long courseId) {
 		
 		ReviewFormBean reviews = new ReviewFormBean();
-		reviews.setReview(reviewMstRepo.findByCourseMstId(courseId));
-		reviews.setCourse(courseMstRepo.findById(courseId));
+		reviews.setReviewMst(reviewMstRepo.findByCourseMstId(courseId));
+		reviews.setCourseMst(courseMstRepo.findById(courseId));
 		return reviews;
 	}
 

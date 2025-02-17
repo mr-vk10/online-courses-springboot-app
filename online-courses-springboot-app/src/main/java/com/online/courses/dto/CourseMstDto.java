@@ -9,12 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseErrorResponse {
-    
-    private int status;
-    
-    private String message;
-    
-    private long timeStamp;
+public class CourseMstDto {
 
+    private Long courseMstId;
+    private Long instructorMstId;
+    private Long activeFlag;
 }

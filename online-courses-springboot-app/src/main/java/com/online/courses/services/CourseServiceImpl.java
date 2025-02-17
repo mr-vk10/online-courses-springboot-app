@@ -1,8 +1,14 @@
 package com.online.courses.services;
 
+import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.online.courses.dto.CourseMstDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,11 +53,54 @@ public class CourseServiceImpl implements CourseService {
 	*/
 	
 	@Override
-    public List<CoursesDetailFormBean> getCourses() throws Exception {
-	    
+    public List<CourseMstDto> getCourses(int pageNo, int pageSize) throws Exception {
+
+		/*
 	    CoursesDetailFormBean coursesDetailFormBean = new CoursesDetailFormBean();
-        return courseDao.getCourses(coursesDetailFormBean); 
+	    coursesDetailFormBean.setPageNo(pageNo);
+	    coursesDetailFormBean.setPageSize(pageSize);    
+        List<CoursesDetailFormBean> coursesDetailList = courseDao.getCourses(coursesDetailFormBean);
+        int totalCourses = courseDao.getTotalCourses(coursesDetailFormBean);
+        coursesDetailFormBean.setCoursesDetailList(coursesDetailList);
+        coursesDetailFormBean.setTotalCourses(totalCourses);
+        */
+
+		// Create Pagable interface
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
+
+		Page<CourseMst> coursePage= courseMstRepo.findAll(pageable);
+
+		// get content from Page Object
+		List<CourseMst> coursesLst = coursePage.getContent();
+
+		// convert list of Course Entity to Course DTO
+		return coursesLst.stream().map(course -> mapToCourseDto(course)).collect(Collectors.toList());
+        // return coursesDetailFormBean;
     }
+
+	// convert Course Entity to DTO
+	private CourseMstDto mapToCourseDto(CourseMst courseMst){
+
+		CourseMstDto courseMstDto = new CourseMstDto();
+
+		courseMstDto.setCourseMstId(courseMst.getCourseMstId());
+		courseMstDto.setActiveFlag(courseMst.getActiveFlag());
+		courseMstDto.setInstructorMstId(courseMst.getInstructorMstId());
+
+		return courseMstDto;
+	}
+
+	// convert Course DTO to Entity
+	private CourseMst mapToCourseEntity(CourseMstDto courseMstDto){
+
+		CourseMst courseMst = new CourseMst();
+
+		courseMst.setCourseMstId(courseMstDto.getCourseMstId());
+		courseMst.setActiveFlag(courseMstDto.getActiveFlag());
+		courseMst.setInstructorMstId(courseMstDto.getInstructorMstId());
+
+		return courseMst;
+	}
 
 	@Override
 	public CoursesDetailFormBean getCourse(long courseId) throws Exception{
@@ -79,6 +128,8 @@ public class CourseServiceImpl implements CourseService {
 	    
 		return courses.get(0);
 	}
+
+
 
 	@Override
 	@Transactional

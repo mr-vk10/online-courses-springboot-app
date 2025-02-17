@@ -1,15 +1,15 @@
 package com.online.courses.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import org.hibernate.annotations.GenericGenerator;
-
-//annotate the class as an entity and map to db table
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "INSTRUCTOR_MST")
 public class InstructorMst {
@@ -18,7 +18,7 @@ public class InstructorMst {
 	// annotate the fields with db columns
 
     @Id
-    @GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "INSTRUCTOR_MST_ID")
 	private Long instructorMstId;
 
@@ -31,40 +31,5 @@ public class InstructorMst {
 	
 	@Column(name = "ACTIVE_FLAG")
     private Long activeFlag;
-
-	// create constructors
-
-	public InstructorMst() {
-
-	}
-
-	public InstructorMst(Long activeFlag) {
-		super();
-		this.activeFlag = activeFlag;
-	}
-
-	// generate getters and setter methods
-
-	public Long getInstructorMstId() {
-		return instructorMstId;
-	}
-
-	public void setInstructorMstId(Long instructorMstId) {
-		this.instructorMstId = instructorMstId;
-	}
-	
-	public Long getActiveFlag() {
-        return activeFlag;
-    }
-
-    public void setActiveFlag(Long activeFlag) {
-        this.activeFlag = activeFlag;
-    }
-
-    // generate toString method
-    @Override
-    public String toString() {
-        return "InstructorMst [instructorMstId=" + instructorMstId + ", activeFlag=" + activeFlag + "]";
-    }
 	
 }

@@ -1,11 +1,12 @@
 package com.online.courses.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
@@ -60,6 +61,11 @@ public class CourseDaoImpl implements CourseDao {
                 execQuery.setParameter("courseMstId", coursesDetailFormBean.getCourseMstId());
             }
             
+            if(coursesDetailFormBean.getPageNo().compareTo(BigInteger.ZERO) > 0) {
+            	execQuery.setFirstResult(coursesDetailFormBean.getPageNo().multiply(coursesDetailFormBean.getPageSize()).intValue());
+                execQuery.setMaxResults(coursesDetailFormBean.getPageSize().intValue());
+            }
+            
             courses = execQuery.unwrap(NativeQuery.class)
                                .addScalar("courseDtlId", StandardBasicTypes.LONG)
                                .addScalar("title", StandardBasicTypes.STRING)
@@ -81,6 +87,38 @@ public class CourseDaoImpl implements CourseDao {
         }
         
         return courses;
+    }
+
+	@Override
+	public int getTotalCourses(CoursesDetailFormBean coursesDetailFormBean) throws Exception {
+        
+        int totalCourses = 0;
+        try {
+            
+            StringBuilder query = new StringBuilder();
+            
+            query.append("SELECT ");
+            query.append("COUNT(*) as totalCourses FROM COURSE_MST courseMst ");
+            query.append("where 1=1");
+            query.append(" AND courseMst.ACTIVE_FLAG = 1 ");
+            
+            if(coursesDetailFormBean.getCourseMstId()!=null) {
+                query.append(" AND courseMst.COURSE_MST_ID = :courseMstId ");
+            }
+            
+            Query execQuery = entityManager.createNativeQuery(query.toString());
+            
+            if(coursesDetailFormBean.getCourseMstId()!=null) {
+                execQuery.setParameter("courseMstId", coursesDetailFormBean.getCourseMstId());
+            }
+                        
+            totalCourses = ((Integer)execQuery.getSingleResult()).intValue();
+            
+        }catch(Exception e) {
+            throw e;
+        }
+        
+        return totalCourses;
     }
 
 }
