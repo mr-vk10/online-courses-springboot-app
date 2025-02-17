@@ -8,7 +8,7 @@ function AuthHeader() {
     <>
       <header className={classes.header}>
         <div className={classes.logo}>
-          <img src="logo.png" alt="MED NEAR ME LOGO" />
+          <img src="logo.png" alt="ONLINE COURSES LOGO" />
           {/* <Logo /> */}
         </div>
         <nav>

@@ -9,7 +9,7 @@ function AdminSidebar() {
         <ul className={classes.list}>
           <li>
             <NavLink
-              to="/seller"
+              to="all-courses"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }

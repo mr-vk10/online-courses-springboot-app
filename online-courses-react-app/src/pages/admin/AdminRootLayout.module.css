@@ -1,4 +1,8 @@
-.content {
-  margin: 2rem auto;
-  text-align: center;
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
 }

@@ -6,6 +6,7 @@ import AdminRootLayout from "./pages/admin/AdminRootLayout";
 import LoginPage from "./pages/authentication/LoginPage";
 import SignUpPage from "./pages/authentication/SignUpPage";
 import AuthRootLayout from "./pages/authentication/AuthRootLayout";
+import CourseList, { loadCourseList } from "./pages/admin/CourseList";
 
 const router = createBrowserRouter([
   {
@@ -17,25 +18,24 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/",
+    path: "/admin",
     element: <AdminRootLayout />,
     children: [
       {
-        path: "/all-courses",
-        element: <Courses />,
-        loader: async () => {
-          const response = await fetch("http://localhost:8000/courses");
-
-          if (!response.ok) {
-            //
-          } else {
-            const resData = await response.json();
-            console.log(resData);
-            return resData;
-          }
-        },
+        path: "all-courses",
+        children: [
+          {
+            index: true,
+            element: <CourseList />,
+          },
+          {
+            path: ":pageNo",
+            element: <CourseList />,
+            loader: loadCourseList,
+          },
+        ],
       },
-      { path: "/add-courses", element: <AddCourses /> },
+      { path: "add-courses", element: <AddCourses /> },
     ],
   },
 ]);
